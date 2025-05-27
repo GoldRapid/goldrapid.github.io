@@ -207,13 +207,24 @@ async function setLang(lang) {
   // Render skill sections
   const grid = document.getElementById('skillsGrid');
   grid.innerHTML = '';
+  grid.className = 'skills-sections-flex';
+  const sectionAnchors = [
+    'section-tools',
+    'section-software',
+    'section-iot',
+    'section-game'
+  ];
   skillSections.forEach((section, idx) => {
     const sectionDiv = document.createElement('div');
     sectionDiv.className = 'skills-section';
+    sectionDiv.id = sectionAnchors[idx];
     const sectionTitle = document.createElement('h3');
     sectionTitle.className = 'skills-section-title';
     sectionTitle.textContent = langData.sections && langData.sections[idx] ? langData.sections[idx] : section.titleKey;
     sectionDiv.appendChild(sectionTitle);
+    // NEW: wrapper for full width
+    const sectionInner = document.createElement('div');
+    sectionInner.className = 'skills-section-inner';
     const sectionGrid = document.createElement('div');
     sectionGrid.className = 'skills-grid-inner';
     section.tiles.forEach((tile, i) => {
@@ -230,7 +241,8 @@ async function setLang(lang) {
       tileDiv.appendChild(label);
       sectionGrid.appendChild(tileDiv);
     });
-    sectionDiv.appendChild(sectionGrid);
+    sectionInner.appendChild(sectionGrid);
+    sectionDiv.appendChild(sectionInner);
     grid.appendChild(sectionDiv);
   });
   document.getElementById('aboutTitle').textContent = langData.aboutTitle;
@@ -267,7 +279,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Language
   let lang = detectLang();
   await setLang(lang);
-  document.getElementById('langBtn').onclick = async () => {
+  document.getElementById('langBtn').onclick = async (e) => {
+    e.preventDefault();
     lang = lang === 'pl' ? 'en' : 'pl';
     await setLang(lang);
   };
@@ -279,4 +292,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     theme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     setTheme(theme);
   };
+
+  // Jump to top button logic
+  const toTopBtn = document.getElementById('toTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      toTopBtn.style.display = 'block';
+    } else {
+      toTopBtn.style.display = 'none';
+    }
+  });
+  toTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Highlight nav links on scroll
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = [
+    { id: 'section-tools', link: navLinks[0] },
+    { id: 'section-software', link: navLinks[1] },
+    { id: 'section-iot', link: navLinks[2] },
+    { id: 'section-game', link: navLinks[3] },
+    { id: 'aboutTitle', link: navLinks[4] }
+  ];
+  function updateNavHighlight() {
+    let found = false;
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const sec = document.getElementById(sections[i].id);
+      if (sec && window.scrollY + 80 >= sec.offsetTop) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        sections[i].link.classList.add('active');
+        found = true;
+        break;
+      }
+    }
+    if (!found) navLinks.forEach(l => l.classList.remove('active'));
+  }
+  window.addEventListener('scroll', updateNavHighlight);
+  updateNavHighlight();
 });
