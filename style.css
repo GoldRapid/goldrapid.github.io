@@ -1,0 +1,165 @@
+body {
+  background: #f7f9fb;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] {
+  background: #181c22;
+  color: #f3f3f3;
+}
+
+.container {
+  max-width: 480px;
+  margin: 120px auto 60px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 40px 32px 32px 32px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 90px 8px 24px 8px;
+    padding: 24px 8px 16px 8px;
+  }
+}
+
+[data-theme="dark"] .container {
+  background: #23272f;
+  color: #f3f3f3;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+
+.logo {
+  width: 260px;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+}
+
+[data-theme="dark"] p {
+  color: #bbb;
+}
+
+.top-controls {
+  position: fixed;
+  top: 24px;
+  right: 36px;
+  display: flex;
+  gap: 14px;
+  z-index: 100;
+  align-items: center;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 6px 18px;
+}
+
+[data-theme="dark"] .top-controls {
+  background: rgba(35,39,47,0.92);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 600px) {
+  .top-controls {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    gap: 8px;
+  }
+}
+
+.theme-toggle, .lang-toggle {
+  display: inline-block;
+}
+
+.theme-toggle button, .lang-toggle button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.theme-toggle button:hover, .lang-toggle button:hover {
+  background: #e3e8ef;
+}
+
+[data-theme="dark"] .theme-toggle button:hover, [data-theme="dark"] .lang-toggle button:hover {
+  background: #2c3440;
+}
+
+.lang-toggle button {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  min-width: 56px;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  color: #181c22;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .lang-toggle button {
+  color: #f3f3f3;
+}
+
+#langFlag {
+  font-size: 1.6em;
+  line-height: 1;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+#langLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  color: inherit;
+}
+
+.flag-icon {
+  width: 28px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #bbb;
+}
+
+[data-theme="dark"] .flag-icon {
+  background: #23272f;
+  border: 1px solid #444;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}

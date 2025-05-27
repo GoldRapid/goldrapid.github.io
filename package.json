@@ -1,0 +1,7 @@
+{
+  "name": "goldrapid-static-website",
+  "version": "1.0.0",
+  "description": "Modern bilingual static website for GoldRapid, ready for GitHub Pages.",
+  "private": true,
+  "license": "MIT"
+}
