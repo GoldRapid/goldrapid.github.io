@@ -1,4 +1,4 @@
-# .gitignore for static site
+# .gitignore for GoldRapid static site repository
 .DS_Store
 node_modules/
 dist/

@@ -20,16 +20,16 @@ const translations = {
 const flagSrc = {
   en: {
     alt: "EN",
-    src: "flag-us.svg",
+    src: "img/flag-us.svg",
     label: "EN",
-    altSrc: "flag-pl.svg",
+    altSrc: "img/flag-pl.svg",
     altLabel: "PL"
   },
   pl: {
     alt: "PL",
-    src: "flag-pl.svg",
+    src: "img/flag-pl.svg",
     label: "PL",
-    altSrc: "flag-us.svg",
+    altSrc: "img/flag-us.svg",
     altLabel: "EN"
   }
 };
